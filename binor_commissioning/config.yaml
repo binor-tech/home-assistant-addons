@@ -1,0 +1,33 @@
+name: Binor Commissioning
+version: 0.1.28
+slug: binor_commissioning
+description: Préparation atelier et mise en service temporaire des installations Binor.
+url: https://binor.io
+image: ghcr.io/binor-tech/home-assistant-{arch}-binor-commissioning
+startup: application
+boot: manual
+init: false
+arch: [aarch64, amd64]
+homeassistant: 2026.8.0
+host_network: true
+homeassistant_api: true
+hassio_api: true
+hassio_role: manager
+services: [mqtt:need]
+map: [config:rw]
+ingress: true
+ingress_port: 8098
+panel_icon: mdi:progress-wrench
+panel_title: Mise en service Binor
+options:
+  api_url: https://api.binor.io
+  zigbee2mqtt_slug: 45df7312_zigbee2mqtt
+  trusted_proxy_cidr: 172.30.33.0/24
+schema:
+  api_url: url
+  zigbee2mqtt_slug: str
+  trusted_proxy_cidr: str
+environment:
+  BINOR_COMMISSIONING_DATA_DIRECTORY: /data
+  BINOR_HA_CONFIG_DIRECTORY: /config
+  BINOR_COMMISSIONING_PORT: "8098"

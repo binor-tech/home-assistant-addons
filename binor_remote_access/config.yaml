@@ -1,0 +1,16 @@
+name: Binor Remote Access
+version: 0.1.28
+slug: binor_remote_access
+description: Accès distant sortant et chiffré pour Home Assistant via Cloudflare Tunnel.
+url: https://binor.io
+image: ghcr.io/binor-tech/home-assistant-{arch}-binor-remote-access
+startup: services
+boot: auto
+init: false
+arch: [aarch64, amd64]
+homeassistant: 2026.8.0
+stdin: true
+options: {}
+schema: {}
+environment:
+  BINOR_TUNNEL_TOKEN_PATH: /data/tunnel-token

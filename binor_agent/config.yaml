@@ -1,0 +1,31 @@
+name: Binor Agent
+slug: binor_agent
+version: 0.4.2
+image: ghcr.io/binor-tech/home-assistant-{arch}-binor-agent
+description: Supervision SAV et intelligence énergétique Binor pour Home Assistant.
+url: https://binor.io
+startup: application
+boot: auto
+init: false
+arch:
+  - aarch64
+homeassistant: 2026.8.0
+homeassistant_api: true
+hassio_api: true
+hassio_role: backup
+services:
+  - mqtt:need
+ingress: true
+ingress_port: 8099
+watchdog: http://[HOST]:[PORT:8099]/health
+panel_icon: mdi:home-analytics
+panel_title: Binor
+options:
+  api_url: https://api.binor.io
+  pairing_code: ""
+schema:
+  api_url: url
+  pairing_code: str?
+environment:
+  BINOR_AGENT_DATA_DIRECTORY: /data
+  BINOR_AGENT_PORT: "8099"

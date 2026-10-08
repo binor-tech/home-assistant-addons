@@ -1,0 +1,25 @@
+name: Binor Tempo
+slug: binor_tempo
+version: 0.6.4
+image: ghcr.io/binor-tech/home-assistant-{arch}-binor-tempo
+description: Programmation des lumières, prises, clims et volets pour la semaine, Chabbat et les fêtes.
+url: https://binor.io
+startup: application
+boot: auto
+init: false
+arch:
+  - aarch64
+homeassistant: 2026.8.0
+homeassistant_api: true
+services:
+  - mqtt:need
+ingress: true
+ingress_port: 8097
+watchdog: http://[HOST]:[PORT:8097]/health
+panel_icon: mdi:calendar-clock
+panel_title: Tempo
+options: {}
+schema: {}
+environment:
+  BINOR_TEMPO_DATA_DIRECTORY: /data
+  BINOR_TEMPO_PORT: "8097"
